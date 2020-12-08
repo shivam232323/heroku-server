@@ -11,10 +11,9 @@ var knex = require('knex');
 const data =knex({
   client: 'pg',
   connection: {
-    host : 'postgresql-shaped-87199',
-    user : 'postgres',
-    password : '9029',
-    database : 'smart-brain'
+    host : process.env.DATABASE_URL,
+    ssl:true,
+   
   }
 });
 

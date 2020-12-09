@@ -56,11 +56,7 @@ app.post('/register',(req ,res) => {
 
 });
 
-app.post('/signin', signin.handleSignin(data, bcrypt))
-
-
-
-
+app.post('/signin', signin.handleSignin(data, bcrypt));
 
 app.listen(process.env.PORT || 8080 ,() => {
   console.log(`app is running on ${process.env.PORT}`)});

@@ -5,7 +5,8 @@ var cors = require('cors');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 var knex = require('knex');
-const signin = require('./controllers/signin');
+
+
 
 const data =knex({
   client: 'pg',
@@ -56,7 +57,31 @@ app.post('/register',(req ,res) => {
 
 });
 
-app.post('/signin', signin.handleSignin(data, bcrypt));
+
+app.post('/signin',(req,res) => {
+  let count =0;
+  data.select('email', 'hash').from('login')
+  .where('email', '=', req.body.email)
+  .then(
+    value => {
+      
+      bcrypt.compare(req.body.password, value[0].hash, function(err, result) {
+        
+        if(result === true && req.body.password.length > 1)
+        {
+         
+           res.json('pass');
+           
+        }
+
+       
+        
+    })
+     
+  })
+  .catch(err => res.json('not Found'))
+});
+
 
 app.listen(process.env.PORT || 8080 ,() => {
   console.log(`app is running on ${process.env.PORT}`)});

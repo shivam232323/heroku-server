@@ -59,7 +59,7 @@ app.post('/register',(req ,res) => {
 
 
 app.post('/signin',(req,res) => {
-  let count =0;
+  
   data.select('email', 'hash').from('login')
   .where('email', '=', req.body.email)
   .then(

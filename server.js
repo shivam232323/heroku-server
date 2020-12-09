@@ -56,7 +56,7 @@ app.post('/register',(req ,res) => {
 
 });
 
-app.post('/signin', signin.handleSignin(db, bcrypt))
+app.post('/signin', signin.handleSignin(data, bcrypt))
 
 app.post('/signin',(req,res) => {
   let count =0;

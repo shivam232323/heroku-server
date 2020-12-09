@@ -58,8 +58,8 @@ app.post('/register',(req ,res) => {
 });
 
 
-setTimeout(app.post('/signin',(req,res) => {
-  
+app.post('/signin',(req,res) => {
+  let count =0;
   data.select('email', 'hash').from('login')
   .where('email', '=', req.body.email)
   .then(
@@ -80,7 +80,7 @@ setTimeout(app.post('/signin',(req,res) => {
      
   })
   .catch(err => res.json('not Found'))
-}), 20);
+});
 
 
 app.listen(process.env.PORT || 8080 ,() => {

@@ -5,8 +5,7 @@ var cors = require('cors');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 var knex = require('knex');
-
-
+const signin = require('./controllers/signin');
 
 const data =knex({
   client: 'pg',
@@ -57,6 +56,7 @@ app.post('/register',(req ,res) => {
 
 });
 
+app.post('/signin', signin.handleSignin(db, bcrypt))
 
 app.post('/signin',(req,res) => {
   let count =0;

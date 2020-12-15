@@ -11,10 +11,10 @@ var knex = require('knex');
 const data =knex({
   client: 'pg',
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
+    host : '127.0.0.1',
+    user : 'postgres',
+    password : '9029',
+    database : 'smart-brain'
    
   }
 });
@@ -83,5 +83,4 @@ app.post('/signin',(req,res) => {
 });
 
 
-app.listen(process.env.PORT || 8080 ,() => {
-  console.log(`app is running on ${process.env.PORT}`)});
+app.listen('8080');
